@@ -72,10 +72,14 @@ def delay_after_operation(s):
 
 
 def get_localhost():
-    """Return localhost and port 8080"""
+    """Return localhost"""
     while True:
-        with suppress(Exception):
+        try:
             name = socket.getfqdn(socket.gethostname())
+            host = socket.gethostbyname(name)
+            return host
+        except:
+            name = socket.gethostname()
             host = socket.gethostbyname(name)
             return host
 
