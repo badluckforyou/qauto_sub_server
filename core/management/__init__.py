@@ -49,7 +49,11 @@ class Management:
             # -t, 端口的标识, 如果用户未传入port, 则默认port为8080
             elif "-t" in arg:
                 self.port = self.parse_argument(arg, "-t")
-                self.port = 8080 if not self.port else int(self.port)
+                if not self.port:
+                    self.port = 8080 
+                    sys.stdout.write("Parse port failed, set port 8080.\n")
+                else:
+                    self.port = int(self.port)
             
         class User:
             username = self.username
