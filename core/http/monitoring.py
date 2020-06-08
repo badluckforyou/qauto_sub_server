@@ -6,7 +6,6 @@ import threading
 from importlib import import_module
 from traceback import format_exc
 
-from common.database import DataBaseManage
 from common.log import logger
 
 
