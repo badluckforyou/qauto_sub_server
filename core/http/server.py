@@ -2,6 +2,7 @@ import re
 import ujson as json
 import socket
 import threading
+import traceback
 
 from queue import Queue
 from contextlib import suppress
@@ -47,7 +48,11 @@ def release_port(port):
 
 
 def run_server(data, host, port, queue):
-    ret = connect_central_server(data, host, port)
+    try:
+        ret = connect_central_server(data, host, port)
+    except:
+        logger.error(traceback.format_exc())
+        return
     if "success" not in ret.lower():
         logger.error(ret)
         return
