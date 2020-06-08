@@ -1,0 +1,303 @@
+[2020-06-08 14:41:29,163][INFO] Start watching sub-server status ...
+[2020-06-08 14:41:29,284][INFO] Connect to central server 192.168.191.249 success
+[2020-06-08 14:41:29,285][INFO] Start sub-server http://192.168.191.249:8080
+[2020-06-08 14:41:39,894][INFO] Appium iOS starts connecting.
+[2020-06-08 14:41:39,894][INFO] Automated testing starts success.
+[2020-06-08 14:42:09,328][ERROR] Traceback (most recent call last):
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/platforms/identifier.py", line 46, in connect
+    cls.DRIVER = iOSAppium(cls.session)
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/core/refactor/ios.py", line 34, in __init__
+    super().__init__(session, platform="ios")
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/core/refactor/appium_refactor.py", line 45, in __init__
+    self.init_driver = webdriver.Remote("http://localhost:4723/wd/hub", session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/appium/webdriver/webdriver.py", line 151, in __init__
+    proxy
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/appium/webdriver/webdriver.py", line 227, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Connection was refused to port 49443
+
+
+[2020-06-08 14:42:09,329][INFO] Appium iOS connects finished.
+[2020-06-08 14:42:09,356][INFO] ================== Finished in 29.5s. ==================
+[2020-06-08 14:42:09,937][INFO] Appium iOS starts connecting.
+[2020-06-08 14:42:09,937][INFO] Automated testing starts success.
+[2020-06-08 14:42:31,819][ERROR] Traceback (most recent call last):
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/platforms/identifier.py", line 46, in connect
+    cls.DRIVER = iOSAppium(cls.session)
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/core/refactor/ios.py", line 34, in __init__
+    super().__init__(session, platform="ios")
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/core/refactor/appium_refactor.py", line 45, in __init__
+    self.init_driver = webdriver.Remote("http://localhost:4723/wd/hub", session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/appium/webdriver/webdriver.py", line 151, in __init__
+    proxy
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/appium/webdriver/webdriver.py", line 227, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Connection was refused to port 49449
+
+
+[2020-06-08 14:42:31,820][INFO] Appium iOS connects finished.
+[2020-06-08 14:42:31,847][INFO] ================== Finished in 21.9s. ==================
+[2020-06-08 14:42:39,978][INFO] Appium iOS starts connecting.
+[2020-06-08 14:42:39,978][INFO] Automated testing starts success.
+[2020-06-08 14:43:04,852][ERROR] Traceback (most recent call last):
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/platforms/identifier.py", line 46, in connect
+    cls.DRIVER = iOSAppium(cls.session)
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/core/refactor/ios.py", line 34, in __init__
+    super().__init__(session, platform="ios")
+  File "/Users/bindo1111/Documents/trash/qauto_sub_server/core/refactor/appium_refactor.py", line 45, in __init__
+    self.init_driver = webdriver.Remote("http://localhost:4723/wd/hub", session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/appium/webdriver/webdriver.py", line 151, in __init__
+    proxy
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/appium/webdriver/webdriver.py", line 227, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Connection was refused to port 49455
+
+
+[2020-06-08 14:43:04,853][INFO] Appium iOS connects finished.
+[2020-06-08 14:43:04,880][INFO] ================== Finished in 24.9s. ==================
+[2020-06-08 14:44:14,493][INFO] Appium iOS starts connecting.
+[2020-06-08 14:44:14,493][INFO] Automated testing starts success.
+[2020-06-08 14:44:28,173][INFO] Appium iOS connects finished.
+[2020-06-08 14:44:33,845][INFO] iOSAppium click finished in 5.7s. Args: [XCUIElementTypeStaticText, Bindo]
+[2020-06-08 14:44:35,045][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, Discard]
+[2020-06-08 14:44:36,245][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 013 925 Silver]
+[2020-06-08 14:44:39,030][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:44:41,823][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:44:43,838][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 014 925 Silver]
+[2020-06-08 14:44:46,685][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:44:49,467][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:44:51,434][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 015 925 Silver]
+[2020-06-08 14:44:54,286][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:44:57,129][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:44:59,083][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 016 925 Silver]
+[2020-06-08 14:45:01,945][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:04,641][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:45:06,633][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 017 925 Silver]
+[2020-06-08 14:45:09,464][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:12,199][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:45:14,680][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 113 彩色魚18K白金]
+[2020-06-08 14:45:17,522][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:20,408][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:45:22,382][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 119 魚18K白金]
+[2020-06-08 14:45:25,265][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:28,111][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:45:30,130][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 120 天鵝18K白金]
+[2020-06-08 14:45:32,992][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:35,790][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:45:37,768][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 14:45:44,094][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 14:45:46,937][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:49,920][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:45:52,017][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 14:45:53,737][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 14:45:56,514][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:45:59,324][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:46:00,169][INFO] ================== Finished in 1m45.7s. ==================
+[2020-06-08 14:46:04,606][INFO] Appium iOS starts connecting.
+[2020-06-08 14:46:04,607][INFO] Automated testing starts success.
+[2020-06-08 14:46:17,442][INFO] Appium iOS connects finished.
+[2020-06-08 14:46:23,035][INFO] iOSAppium click finished in 5.6s. Args: [XCUIElementTypeStaticText, Bindo]
+[2020-06-08 14:46:24,251][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, Discard]
+[2020-06-08 14:46:25,479][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 013 925 Silver]
+[2020-06-08 14:46:28,303][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:46:30,992][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:46:32,954][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 014 925 Silver]
+[2020-06-08 14:46:35,778][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:46:38,637][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:46:40,686][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 015 925 Silver]
+[2020-06-08 14:46:43,562][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:46:46,354][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:46:48,438][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 016 925 Silver]
+[2020-06-08 14:46:51,296][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:46:54,056][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:46:56,031][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 017 925 Silver]
+[2020-06-08 14:46:58,960][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:47:01,676][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:47:03,666][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 113 彩色魚18K白金]
+[2020-06-08 14:47:06,469][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:47:09,277][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:47:11,328][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 119 魚18K白金]
+[2020-06-08 14:47:14,153][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:47:16,918][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:47:18,913][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 120 天鵝18K白金]
+[2020-06-08 14:47:21,708][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:47:24,576][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:47:26,659][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 14:47:33,192][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 14:47:36,050][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:47:38,961][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:47:41,030][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 14:47:42,748][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 14:47:45,587][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:47:48,475][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:47:49,440][INFO] ================== Finished in 1m44.8s. ==================
+[2020-06-08 14:47:54,711][INFO] Appium iOS starts connecting.
+[2020-06-08 14:47:54,711][INFO] Automated testing starts success.
+[2020-06-08 14:48:07,648][INFO] Appium iOS connects finished.
+[2020-06-08 14:48:13,299][INFO] iOSAppium click finished in 5.7s. Args: [XCUIElementTypeStaticText, Bindo]
+[2020-06-08 14:48:14,499][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, Discard]
+[2020-06-08 14:48:15,699][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 013 925 Silver]
+[2020-06-08 14:48:18,498][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:48:21,222][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:48:23,249][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 014 925 Silver]
+[2020-06-08 14:48:26,116][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:48:28,919][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:48:30,956][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 015 925 Silver]
+[2020-06-08 14:48:33,845][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:48:36,567][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:48:38,507][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 016 925 Silver]
+[2020-06-08 14:48:41,289][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:48:44,061][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:48:46,526][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 017 925 Silver]
+[2020-06-08 14:48:49,328][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:48:52,147][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:48:54,248][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 113 彩色魚18K白金]
+[2020-06-08 14:48:57,100][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:48:59,923][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:49:01,992][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 119 魚18K白金]
+[2020-06-08 14:49:04,855][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:49:07,691][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:49:09,745][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 120 天鵝18K白金]
+[2020-06-08 14:49:12,608][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:49:15,460][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:49:17,397][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 14:49:23,647][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 14:49:26,501][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:49:29,540][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:49:31,596][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 14:49:33,307][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 14:49:36,109][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 14:49:38,898][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 14:49:39,742][INFO] ================== Finished in 1m45.0s. ==================
+[2020-06-08 15:17:34,328][INFO] Appium iOS starts connecting.
+[2020-06-08 15:17:34,329][INFO] Automated testing starts success.
+[2020-06-08 15:17:48,777][INFO] Appium iOS connects finished.
+[2020-06-08 15:17:54,396][INFO] iOSAppium click finished in 5.6s. Args: [XCUIElementTypeStaticText, Bindo]
+[2020-06-08 15:17:55,597][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, Discard]
+[2020-06-08 15:17:56,797][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 013 925 Silver]
+[2020-06-08 15:17:59,616][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:02,481][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:04,484][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 014 925 Silver]
+[2020-06-08 15:18:07,272][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:10,359][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:12,360][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 015 925 Silver]
+[2020-06-08 15:18:15,252][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:18,272][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:20,373][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 016 925 Silver]
+[2020-06-08 15:18:23,305][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:26,304][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:28,355][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 017 925 Silver]
+[2020-06-08 15:18:31,210][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:34,357][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:36,459][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 113 彩色魚18K白金]
+[2020-06-08 15:18:39,359][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:42,420][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:44,560][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 119 魚18K白金]
+[2020-06-08 15:18:47,460][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:50,509][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:18:53,060][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 120 天鵝18K白金]
+[2020-06-08 15:18:55,959][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:18:59,010][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:19:01,659][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 15:19:08,570][INFO] iOSAppium wait  finished in 1.5s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 15:19:11,609][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:19:14,760][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:19:16,912][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 15:19:18,660][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 15:19:21,559][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:19:24,671][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:19:25,624][INFO] ================== Finished in 1m51.3s. ==================
+[2020-06-08 15:19:34,403][INFO] Appium iOS starts connecting.
+[2020-06-08 15:19:34,403][INFO] Automated testing starts success.
+[2020-06-08 15:19:49,716][INFO] Appium iOS connects finished.
+[2020-06-08 15:19:55,460][INFO] iOSAppium click finished in 5.7s. Args: [XCUIElementTypeStaticText, Bindo]
+[2020-06-08 15:19:56,710][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, Discard]
+[2020-06-08 15:19:57,966][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, 013 925 Silver]
+[2020-06-08 15:20:00,862][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:03,860][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:05,911][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 014 925 Silver]
+[2020-06-08 15:20:08,810][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:12,011][INFO] iOSAppium wait  finished in 1.4s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:14,166][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 015 925 Silver]
+[2020-06-08 15:20:17,061][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:20,211][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:22,261][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 016 925 Silver]
+[2020-06-08 15:20:25,120][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:28,159][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:30,411][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, 017 925 Silver]
+[2020-06-08 15:20:33,314][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:36,411][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:38,511][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 113 彩色魚18K白金]
+[2020-06-08 15:20:41,362][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:44,512][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:46,624][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 119 魚18K白金]
+[2020-06-08 15:20:49,560][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:20:52,662][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:20:54,761][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 120 天鵝18K白金]
+[2020-06-08 15:20:57,661][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:21:00,666][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:21:02,817][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 15:21:09,012][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 15:21:11,961][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:21:15,163][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:21:17,362][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 15:21:19,117][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 15:21:22,011][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:21:25,160][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:21:26,597][INFO] ================== Finished in 1m52.2s. ==================
+[2020-06-08 15:21:34,479][INFO] Appium iOS starts connecting.
+[2020-06-08 15:21:34,479][INFO] Automated testing starts success.
+[2020-06-08 15:21:48,819][INFO] Appium iOS connects finished.
+[2020-06-08 15:21:54,613][INFO] iOSAppium click finished in 5.8s. Args: [XCUIElementTypeStaticText, Bindo]
+[2020-06-08 15:21:55,863][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, Discard]
+[2020-06-08 15:21:57,117][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, 013 925 Silver]
+[2020-06-08 15:22:00,061][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:03,062][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:05,063][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 014 925 Silver]
+[2020-06-08 15:22:07,962][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:11,362][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:14,013][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 015 925 Silver]
+[2020-06-08 15:22:16,912][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:19,912][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:21,920][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 016 925 Silver]
+[2020-06-08 15:22:24,762][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:27,912][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:30,513][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 017 925 Silver]
+[2020-06-08 15:22:33,362][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:36,412][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:38,463][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 113 彩色魚18K白金]
+[2020-06-08 15:22:41,314][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:44,369][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:46,375][INFO] iOSAppium wait  finished in 1.1s. Args: [XCUIElementTypeStaticText, 119 魚18K白金]
+[2020-06-08 15:22:49,265][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:22:52,413][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:22:54,562][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 120 天鵝18K白金]
+[2020-06-08 15:22:57,463][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:23:00,512][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:23:02,613][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 15:23:08,913][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 15:23:11,862][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:23:15,220][INFO] iOSAppium wait  finished in 1.4s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:23:17,363][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 066 Rainforest]
+[2020-06-08 15:23:19,124][INFO] iOSAppium wait  finished in 1.2s. Args: [XCUIElementTypeStaticText, 旅行袋TRAVEL]
+[2020-06-08 15:23:22,114][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeStaticText, HK$]
+[2020-06-08 15:23:25,213][INFO] iOSAppium wait  finished in 1.3s. Args: [XCUIElementTypeButton, Discard]
+[2020-06-08 15:23:26,141][INFO] ================== Finished in 1m51.7s. ==================

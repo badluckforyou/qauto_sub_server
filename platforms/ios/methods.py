@@ -10,7 +10,7 @@ from difflib import get_close_matches
 
 from common.csv import Csv
 from common.helper import (time_without_second, time_without_bracket, current_time,
-                            delay_after_operation, image2str, FormatTime, Logger)
+                            delay_after_operation, image2str, FormatTime, Logger, get_automatedtesting)
 from core.http.request import send_2_central_server_insert, send_2_central_server_update
 from platforms.identifier import iOSSession
 
@@ -253,9 +253,9 @@ class Retail(Automation):
                     break
 
     def get_result(self, data):
-        filepath = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+        imagepath = get_automatedtesting()
         image_name = "%s.png" % time_without_second()
-        self.image = os.path.join(filepath, "log", "automatedtesting", image_name)
+        self.image = os.path.join(imagepath, image_name)
         delay_after_operation(1)
         ele = self.find_by_text("HK$")
         if ele:
