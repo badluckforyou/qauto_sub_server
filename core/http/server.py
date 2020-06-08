@@ -10,7 +10,6 @@ from wsgiref.simple_server import WSGIServer, WSGIRequestHandler
 # from http.server import BaseHTTPRequestHandler
 
 from common.log import logger
-from common.config import init_config
 from common.helper import run_cmd, get_localhost, delay_after_operation
 from core.http.monitoring import monitoring
 from core.http.request import connect_central_server
@@ -89,7 +88,6 @@ def server_monitor(data, host, port, queue):
 
 def http_server_start(data):
     """启动子服务器"""
-    init_config()
     queue = Queue()
     host = get_localhost()
     port = data.port
