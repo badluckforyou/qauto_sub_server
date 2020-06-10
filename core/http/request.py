@@ -56,6 +56,7 @@ def send_2_central_server_insert(data):
     url = "http://192.168.191.249:8888/result/insert/"
     return post(url, data=data)
 
+
 def send_2_central_server_update(data):
     """
     向中心服发送任务状态

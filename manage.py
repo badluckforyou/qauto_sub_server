@@ -1,5 +1,5 @@
-# 自动化管理文件
-# 在终端执行对应指令唤起对应的自动化
+# 子服务器管理文件
+# 在终端执行对应指令唤起对应的子服务器
 import sys
 
 from common.log import logger

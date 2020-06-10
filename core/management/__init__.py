@@ -26,7 +26,8 @@ class Management:
         解析argv
         -u: username
         -p: password
-        -s: single, do not share my device to others
+        -P: port
+        -s: single, do not share my server to others
         """
         parser = ArgumentParser()
         options, args = parser.parse_known_args(self.argv)
@@ -46,14 +47,17 @@ class Management:
                     if self.password.strip() == "":
                         sys.stderr.write("Blank passwords aren't allowed.\n")
                         self.password = ""
-            # -t, 端口的标识, 如果用户未传入port, 则默认port为8080
-            elif "-t" in arg:
-                self.port = self.parse_argument(arg, "-t")
+            # -P, 端口的标识, 如果用户未传入或传入了错误的port, 则默认port为8080
+            elif "-P" in arg:
+                self.port = self.parse_argument(arg, "-P")
                 if not self.port:
-                    self.port = 8080 
+                    self.port = 8080
                     sys.stdout.write("Parse port failed, set port 8080.\n")
                 else:
-                    self.port = int(self.port)
+                    try:
+                        self.port = int(self.port)
+                    except:
+                        self.port = 8080
             
         class User:
             username = self.username

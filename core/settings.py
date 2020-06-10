@@ -11,7 +11,7 @@ class Settings:
     # 等待间隔, 供wait()函数调用
     wait_interval = 0.5
     # 等待时长, 供wait()函数调用
-    wait_duration = 20
+    wait_duration = 60
     # 查找间隔, 供find_element()函数调用
     find_interval = 0.33
     # 写入间隔, 供write()函数调用

@@ -7,8 +7,6 @@ from functools import wraps
 from common.helper import time_covered_bracket, delay_after_operation, FormatTime, Logger
 from common.log import logger
 
-__author__ = "Jackey"
-
 
 
 class Record:
@@ -50,9 +48,17 @@ class Record:
                                                             FormatTime.format(time.time() - begin_time))
                 for arg in args:
                     if arg == args[-1]:
-                        msg += "[{}]".format(", ".join(arg))
+                        if isinstance(arg, list):
+                            arg = ", ".join(arg)
+                            msg += "[{}]".format(arg)
+                        else:
+                            msg += arg
                     else:
-                        msg += "[{}], ".format(", ".join(arg))
+                        if isinstance(arg, list):
+                            arg = ", ".join(arg)
+                            msg += "[{}], ".format(arg)
+                        else:
+                            msg += "{}, ".format(arg)
                 Logger.info(msg)
                 logger.info(msg)
         return wrapper

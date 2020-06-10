@@ -86,9 +86,10 @@ class AppiumRefactor:
                 return self.find_element(ele, method=method, one=one)
             # 设置查找间隔, 时间从Settings中获取
             delay_after_operation(Settings.wait_interval)
+            # 等待时间超出一定时间, 则表明没有该元素, raise以防止资源一直被占用
             if time.time() > end_time:
-                break
-        LOGGER.warning("Wait for %s timeout." % ele)
+                LOGGER.warning("Wait for %s timeout." % ele)
+                raise WaitError
 
     def window_size(self):
         """获取屏幕大小"""

@@ -49,5 +49,8 @@ class Logger:
 
 
 
-filename = os.path.join(get_execution(), "%s.log" % time_without_hour())
-logger = Logger(filename).logger
+file = os.path.join(get_execution(), "%s.log" % time_without_hour())
+if os.path.exists(file):
+    os.remove(file)
+    
+logger = Logger(file).logger

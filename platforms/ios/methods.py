@@ -158,7 +158,11 @@ class Common(Automation):
 
     def get_result(self, data, start_time):
         use_time = time.time() - start_time
-        if 500 > use_time >= 300:
+        if 100 > use_time > 60:
+            delay_after_operation(5)
+        elif 300 > use_time >= 100:
+            delay_after_operation(10)
+        elif 500 > use_time >= 300:
             delay_after_operation(15)
         elif 1000 > use_time >= 500:
             delay_after_operation(30)
@@ -188,36 +192,42 @@ class Retail(Automation):
         super().__init__(*args)
 
     def start(self):
-        self.click_by_text("Bindo")
         self.discard = self.find_by_text("Discard")
-        self.date = current_time("%y-%m-%d %H%M")
+        self.date = current_time("%y-%m-%d %H%M%S")
+        csv = Csv("RetailTestCasesBatch5.csv")
         for args in self.steps:
+            self.log = list()
             self.result = dict()
             self.result.setdefault("date", self.date)
             self.result.setdefault("username", self.username)
             self.result.setdefault("project", self.project)
             self.result.setdefault("casename", args[0])
+            self.log.append(args[0])
             start_time = time.time()
             now = time_without_bracket()
             self.result.setdefault("runtime", now)
+            self.log.append(now)
             if args[1]:
-                self.click_by_text(args[1])
+                self.add_coustomer(args[1])
             if args[2]:
-                self.add_coustomer(args[2])
-                self.click_by_text("Bindo")
-                self.click_by_text(args[1])
-            self.add_goods(args[3])
-            self.get_result(args[4])
+                self.choose_discount(args[2])
+            self.click_by_text("Bindo")
+            if args[3]:
+                self.click_by_text(args[3])
+            self.add_goods(args[4])
+            self.get_result(args[5], start_time)
             self.discard.click()
             delay_after_operation(0.1)
             self.find_by_button("Discard").click()
             self.result.setdefault("costtime", FormatTime.format(time.time() - start_time))
+            self.log.append(FormatTime.format(time.time() - start_time))
             self.result.setdefault("log", json.dumps("\r".join(Logger.LOG)))
             self.result.setdefault("report", json.dumps("\r".join(args)))
             self.result.setdefault("image", image2str(self.image))
             os.remove(self.image)
             Logger.init()
             send_2_central_server_insert(self.result)
+            csv.write(self.log)
         data = {"id": self.id, "status": "完成"}
         send_2_central_server_update(data)
 
@@ -232,6 +242,12 @@ class Retail(Automation):
             if ele:
                 ele.click()
                 break
+
+    def choose_discount(self, data):
+        self.click_by_text("PASS")
+        self.click_by_text("Discount")
+        self.click_by_text(data)
+        self.click_by_button("Done")
 
     def add_goods(self, goods):
         goods = goods.split("&")
@@ -252,7 +268,14 @@ class Retail(Automation):
                         ele.click()
                     break
 
-    def get_result(self, data):
+    def get_result(self, data, start_time):
+        use_time = time.time() - start_time
+        if 500 > use_time >= 300:
+            delay_after_operation(15)
+        elif 1000 > use_time >= 500:
+            delay_after_operation(30)
+        elif use_time >= 1000:
+            delay_after_operation(60)
         imagepath = get_automatedtesting()
         image_name = "%s.png" % time_without_second()
         self.image = os.path.join(imagepath, image_name)
@@ -263,7 +286,8 @@ class Retail(Automation):
             price_want = float(data)
             self.result.setdefault("resultwanted", "$%s" % price_want)
             self.result.setdefault("resultinfact", "$%s" % price_true)
-            # self.result.append("%s/%s" % (price_want, price_true))
+            self.log.append("%s/%s" % (price_want, price_true))
+            self.log.append("测试通过" if price_true == price_want else "价格不符")
             result = "通过" if price_true == price_want else "失败"
             self.result.setdefault("testresult", result)
             self.driver.screenshot(self.image)
