@@ -5,7 +5,7 @@ import traceback
 from core.settings import Settings
 from common.helper import run_cmd, delay_after_operation
 from common.exceptions import FindError
-from core.refactor.appium_refactor import AppiumRefactor
+from core.ui.appium_refactor import AppiumRefactor
 
 
 __author__ = "Jackey"

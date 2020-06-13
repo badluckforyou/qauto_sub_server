@@ -2,9 +2,9 @@
 import sys
 import traceback
 
-from core.refactor.web import WebSelenium
-from core.refactor.ios import iOSAppium
-from core.refactor.android import AndroidAppium
+from core.ui.web import WebSelenium
+from core.ui.ios import iOSAppium
+from core.ui.android import AndroidAppium
 from common.log import logger
 from common.exceptions import SessionError
 

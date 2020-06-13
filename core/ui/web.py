@@ -3,7 +3,7 @@ import traceback
 
 from core.settings import Settings
 from common.exceptions import FindError
-from core.refactor.selenium_refactor import SeleniumRefactor
+from core.ui.selenium_refactor import SeleniumRefactor
 
 # 利用getattr来调用selenium函数
 web = {

@@ -26,7 +26,7 @@ class Management:
         解析argv
         -u: username
         -p: password
-        -P: port
+        -P: port, if not input or ot
         -s: single, do not share my server to others
         """
         parser = ArgumentParser()

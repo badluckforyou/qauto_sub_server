@@ -60,26 +60,25 @@ def monitoring(environ):
         else:
             try:
                 post_data = json.loads(wsgi_data.decode(file_encoding))
+                try:
+                    username = post_data["username"]
+                    try:
+                        id = post_data["id"]
+                        platform = post_data["platform"]
+                        testcase = post_data["testcase"]
+                        project  = post_data["project"]
+                        package  = post_data["package"]
+                        function = load_command_module(platform, project.lower())
+                        thread = threading.Thread(target=function, args=(id, username, project, package, testcase))
+                        thread.setDaemon(False)
+                        thread.start()
+                        data = SUCCESS
+                    except:
+                        data = UNEXCEPT_ERROR % format_exc()
+                except:
+                    data = DATA_ERROR % format_exc()
             except:
                 data = JSON_ERROR % format_exc()
-
-            try:
-                username = post_data["username"]
-                try:
-                    id = post_data["id"]
-                    platform = post_data["platform"]
-                    testcase = post_data["testcase"]
-                    project  = post_data["project"]
-                    package  = post_data["package"]
-                    function = load_command_module(platform, project.lower())
-                    thread = threading.Thread(target=function, args=(id, username, project, package, testcase))
-                    thread.setDaemon(False)
-                    thread.start()
-                    data = SUCCESS
-                except:
-                    data = UNEXCEPT_ERROR % format_exc()
-            except:
-                data = DATA_ERROR % format_exc()
         logger.info(data)
     result.append(data.encode(file_encoding))
     return result
