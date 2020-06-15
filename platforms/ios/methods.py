@@ -237,8 +237,8 @@ class Retail(Automation):
         self.write_by_field("Search", data)
         delay_after_operation(1.5)
         while True:
-            # ele = self.find_by_text(data)
-            ele = self.find_by_text("Customer Code")
+            ele = self.find_by_text(data)
+            # ele = self.find_by_text("Customer Code")
             if ele:
                 ele.click()
                 break

@@ -3,6 +3,10 @@ import requests
 
 from common.log import logger
 
+
+CENTRAL_SERVER_ADDRESS = "192.168.1.37"
+
+
 def post(*args, **kwargs):
     headers = {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -25,7 +29,7 @@ def connect_central_server(data, host, port):
     returns:
         central server的返回数据 or None
     """
-    url = "http://192.168.191.249:8888/automation/share/"
+    url = "http://%s:8888/automation/share/" % CENTRAL_SERVER_ADDRESS
     data = {
         "username": data.username,
         "password": data.password,
@@ -53,7 +57,7 @@ def send_2_central_server_insert(data):
     # d = {}
     # for i, v in enumerate(cols):
     #     d.setdefault(v, data[i])
-    url = "http://192.168.191.249:8888/result/insert/"
+    url = "http://%s:8888/result/insert/" % CENTRAL_SERVER_ADDRESS
     return post(url, data=data)
 
 
@@ -65,5 +69,5 @@ def send_2_central_server_update(data):
         return
     if len(data) != 2:
         return
-    url = "http://192.168.191.249:8888/automation/update/"
+    url = "http://%s:8888/automation/update/" % CENTRAL_SERVER_ADDRESS
     return post(url, data=data)
