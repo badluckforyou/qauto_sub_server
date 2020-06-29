@@ -1,11 +1,13 @@
 import os
-import json
 import time
 import asyncio
 import aiohttp
 import datetime
+import platform
+import traceback
 import multiprocessing
-# import win32file
+
+from common.helper import G, get_execution
 
 
 __all__ = ("get", "post")
@@ -20,52 +22,47 @@ def current_time():
 
 class AsyncGet:
 
-    def __init__(self, url, queue):
+    def __init__(self, url, queue, test_start_time):
         self.url = url
-        self.semaphore = asyncio.Semaphore(1024)
         self.queue = queue
-        self.count = 0
+        if platform.system() != "Windows":
+            self.semaphore = asyncio.Semaphore(1024)
+        self.test_start_time = test_start_time
 
     async def get(self):
         data = {}
         async with aiohttp.ClientSession() as session:
-            # start_time = time.time()
             response = await session.get(self.url, headers=HEADERS, ssl=False)
-            # print("Get cost %.2fs" % (time.time() - start_time))
             if response.status == 200:
-                self.count += 1
                 ret = await response.text()
 
-    def create_task(self):
-        return asyncio.create_task(self.get())
+    async def _await(self):
+        for task in self.pool:
+            try:
+                await task
+            except:
+                traceback.print_exc()
 
-    async def check_status(self, tasks):
-        while True:
-            for task in tasks:
-                if task._state == "PENDING":
-                    await asyncio.sleep(0.0001)
-                    break
-            else:
-                break
+    async def run(self, scope):
+        self.pool = [asyncio.create_task(self.get()) for _ in range(*scope)]
+        await self._await()
 
-    async def run_stasks(self, scope):
-        tasks = [self.create_task() for _ in range(*scope)]
-        await self.check_status(tasks)
-        self.queue.put(self.count)
-
-    def start(self, *args):
-        # self.start_time = time.time()
-        asyncio.run(self.run_stasks(*args))
-
-    def _start(self, scope):
-        for _ in range(*scope):
-            asyncio.run(self.get())
+    def start(self, scope):
+        G.test_start_time = self.test_start_time
+        print("测试开始%.3fs后, 进程启动" % (time.time() - self.test_start_time))
+        asyncio.run(self.run(scope))
+        # G.record()
+        self.queue.put(G.data)
 
 
 class AsyncPost:
 
-    def __init__(self, url):
+    def __init__(self, url, queue, test_start_time):
         self.url = url
+        self.queue = queue
+        if platform.system() != "Windows":
+            self.semaphore = asyncio.Semaphore(1024)
+        self.test_start_time = test_start_time
 
     async def post(self, data):
         async with aiohttp.ClientSession() as session:
@@ -73,24 +70,23 @@ class AsyncPost:
             if response.status == 200:
                 ret = await response.text()
 
-    def create_task(self, data):
-        return asyncio.create_task(self.post(data))
+    async def _await(self):
+        for task in self.pool:
+            try:
+                await task
+            except:
+                traceback.print_exc()
 
-    async def check_status(self, tasks):
-        while True:
-            for task in tasks:
-                if task._state == "PENDING":
-                    await asyncio.sleep(0.0001)
-                    break
-            else:
-                break
+    async def run(self, data):
+        self.pool = [asyncio.create_task(self.post(d)) for d in data]
+        await self._await()
 
-    async def run_tasks(self, data):
-        await self.check_status(
-                [self.create_task(d) for d in data])
-
-    def start(self, *args):
-        asyncio.run(self.run_tasks(*args))
+    def start(self, data):
+        G.test_start_time = self.test_start_time
+        print("测试开始%.3fs后, 进程启动" % (time.time() - self.test_start_time))
+        asyncio.run(self.run(data))
+        # G.record()
+        self.queue.put(G.data)
 
 
 def get(url, number=1):
@@ -99,18 +95,18 @@ def get(url, number=1):
         for _ in range(number):
             asyncio.run(AsyncGet(url).get())
         return
-    count_200 = []
+    file = os.path.join(get_execution(), "result.txt")
+    result = []
     for c in range(cpus):
         x = number * c // cpus
         y = number * (c + 1) // cpus
-        print(x, y)
         queue = multiprocessing.Queue()
-        process = multiprocessing.Process(target=AsyncGet(url, queue)._start, args=((x, y),))
+        process = multiprocessing.Process(target=AsyncGet(url, queue, time.time()).start, args=((x, y),))
         process.daemon = False
         process.start()
-        count_200.append(queue.get())
-    print("返回码为200的数量: %s" % sum(count_200))
-    # AsyncGet(url).start((0, number))
+        for data in queue.get():
+            result.append(data)
+    return result
 
 
 def post(url, data):
@@ -119,9 +115,14 @@ def post(url, data):
     if number < cpus:
         for i in range(number):
             asyncio.run(AsyncPost(url).post(data[i]))
+    result = []
     for c in range(cpus):
         x = number * c // cpus
         y = number * (c + 1) // cpus
-        process = multiprocessing.Process(target=AsyncPost(url).start, args=(data[x:y],))
+        queue = multiprocessing.Queue()
+        process = multiprocessing.Process(target=AsyncPost(url, queue, time.time()).start, args=(data[x:y],))
         process.daemon = False
         process.start()
+        for data in queue.get():
+            result.append(data)
+    return result

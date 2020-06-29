@@ -5,6 +5,7 @@ import base64
 import socket
 import datetime
 import subprocess
+import ujson as json
 
 from contextlib import suppress
 
@@ -76,12 +77,9 @@ def get_localhost():
     while True:
         try:
             name = socket.getfqdn(socket.gethostname())
-            host = socket.gethostbyname(name)
-            return host
         except:
             name = socket.gethostname()
-            host = socket.gethostbyname(name)
-            return host
+        return socket.gethostbyname(name)
 
 
 def image2str(image):
@@ -112,13 +110,11 @@ def run_cmd(cmd):
     return stdout
 
 
-
 class FormatTime:
-
     """格式化时间"""
 
-    @staticmethod
-    def check_format(entry):
+    @classmethod
+    def check_format(cls, entry):
         """Check whether the entry is int or float"""
         if isinstance(entry, int):
             return entry
@@ -129,9 +125,12 @@ class FormatTime:
                 raise ValueError
             from collections import Counter
             counter = Counter(entry)
-            if counter["."] < 2 and entry.replace(".", "").isdigit():
-                return float(entry)
-            else:
+            try:
+                if "." not in counter:
+                    return int(entry)
+                elif counter["."] == 1:
+                    return float(entry)
+            except:
                 raise ValueError
         else:
             raise ValueError
@@ -139,9 +138,12 @@ class FormatTime:
     @classmethod
     def format(cls, time):
         """Format the time from seconds to others"""
-        time = cls.check_format(time)
-        if time < 0:
-            raise ValueError
+        try:
+            time = cls.check_format(time)
+            if time < 0:
+                raise ValueError
+        except:
+            raise ValueError("Format time '%s' fialed." % time)
         m, s = divmod(time, 60)
         h, m = divmod(m, 60) 
         res = [
@@ -156,6 +158,7 @@ class FormatTime:
         else:
             result = "".join(res)
         return result
+
 
 class Logger:
 
@@ -177,4 +180,19 @@ class Logger:
     def init(cls):
         cls.LOG = list()
 
+
+class G:
+
+    test_start_time = None
+    message = []
+    data = []
+
+    @classmethod
+    def get_wait_time(cls, time):
+        if cls.test_start_time is not None:
+            return "%.4fs" % (time - cls.test_start_time)
+
+    @classmethod
+    def remind(cls, **kwargs):
+        cls.data.append(kwargs)
 

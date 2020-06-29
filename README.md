@@ -1,18 +1,14 @@
-# Qauto
+# Qauto Sub Server
 
-<p>A project base on appium and selenium.</p>
-<pre><code>It now supports for web/iOS/android, if you want to run your own auto test by it, 
-just write the codes of your app in the file named '/platforms/*/methods.py' and 
-import them at '/platforms/*/__init__.py'.
-</code></pre>
+<p>Qauto的子服务器</p>
+<pre><code>此工具主要服务于测试资源去中心化, 测试人员只需要在其本地电脑启动此工具, 
+即可加入到django服务器集群, 在django中便可以远程调度连接于测试人员本地电脑的测试机,
+当然, 如果测试人员想让测试机仅需在启动时传入特定的参数即可
 
+目前支持的功能:
+    1.远程iOS平台的UI自动化测试服务
 
-
-# Run
-<pre><code>After changing the settings of appium session or selenium 
-execuatable_path in manage.py, execute the commands such as: 
-> python manage.py web steps.csv
-> python manage.py ios steps.csv
-> python manage.py android steps.csv
-Then manage.py will run the method named 'run' in platfroms/*/__init__.py
+未来支持的功能:
+    1.Android/Web平台的自动化测试服务
+    2.iOS/Andorid自动化执行期间的性能监控
 </code></pre>

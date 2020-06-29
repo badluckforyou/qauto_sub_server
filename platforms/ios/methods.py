@@ -11,7 +11,7 @@ from difflib import get_close_matches
 from common.csv import Csv
 from common.helper import (time_without_second, time_without_bracket, current_time,
                             delay_after_operation, image2str, FormatTime, Logger, get_automatedtesting)
-from core.http.request import send_2_central_server_insert, send_2_central_server_update
+from core.http.request import insert_result, update_task
 from platforms.identifier import iOSSession
 
 
@@ -185,7 +185,6 @@ class Common(Automation):
             raise ValueError("Can't Find 'HK$' element.")
 
 
-
 class Retail(Automation):
 
     def __init__(self, *args):
@@ -193,7 +192,8 @@ class Retail(Automation):
 
     def start(self):
         self.discard = self.find_by_text("Discard")
-        self.date = current_time("%y-%m-%d %H%M%S")
+        self.date = current_time("%Y-%m-%d %X")
+        update_task({"id": self.id, "date": self.date})
         csv = Csv("RetailTestCasesBatch5.csv")
         for args in self.steps:
             self.log = list()
@@ -226,10 +226,10 @@ class Retail(Automation):
             self.result.setdefault("image", image2str(self.image))
             os.remove(self.image)
             Logger.init()
-            send_2_central_server_insert(self.result)
+            insert_result(self.result)
             csv.write(self.log)
         data = {"id": self.id, "status": "完成"}
-        send_2_central_server_update(data)
+        update_task(data)
 
     def add_coustomer(self, data):
         """选择顾客"""
@@ -237,8 +237,8 @@ class Retail(Automation):
         self.write_by_field("Search", data)
         delay_after_operation(1.5)
         while True:
-            ele = self.find_by_text(data)
-            # ele = self.find_by_text("Customer Code")
+            # ele = self.find_by_text(data)
+            ele = self.find_by_text("Customer Code")
             if ele:
                 ele.click()
                 break
@@ -296,75 +296,6 @@ class Retail(Automation):
             raise ValueError("Can't Find 'HK$' element.")
 
 
-
-class Retail2(Automation):
-
-    def __init__(self, *args):
-        super().__init__(*args)
-
-    def start(self):
-        logpath = os.path.join(self.filepath, "log")
-        self.csv = Csv(os.path.join(logpath, "%s.csv" % time_without_second()))
-        # 生成报告
-        self.csv.generate(self.titles)
-        self.find_by_button("search")
-        for args in self.steps:
-            self.log_data = list()
-            start_time = time.time()
-            self.log_data.append(args[0])
-            now = time_in_hour()
-            self.log_data.append(now)
-            self.search_goods(args[1])
-            self.click_by_text("Cancel")
-            self.get_result(args[2])
-            self.click_by_text("Discard")
-            self.click_by_button("Discard")
-            self.log_data.append(FormatTime.format(time.time() - start_time))
-            logname = "%s.txt" % now.replace(":", "")
-            self.log_data.append(logname)
-            # 将数据写入报告中
-            self.csv.write(self.log_data)
-
-            with open(os.path.join(logpath, logname), "a+") as f:
-                for log in Logger.LOG:
-                    f.write(log)
-            Logger.init()
-
-    def search_goods(self, goods):
-        goods = goods.split("&")
-        for good in goods:
-            good = good.split("*")
-            if len(good) == 1:
-                f = good[0]
-                n = 1
-            elif len(good) == 2:
-                f, n = good
-                n = int(n)
-            else:
-                raise ValueError("Case Error: %s" % goods)
-            self.write_by_field("Search", f)
-            ele = None
-            while not ele:
-                ele = self.find_by_text(f)
-            for _ in range(n):
-                ele.click()
-
-    def get_result(self, data):
-        ele = self.find_by_text("HK$")
-        image_name = "%s.png" % time_without_second()
-        self.filename = os.path.join("log", image_name)
-        if ele:
-            price_true = float(ele.text.split("$")[-1].replace(",", ""))
-            price_want = float(data)
-            self.log_data.append("$%s" % price_want)
-            self.log_data.append("$%s" % price_true)
-            result = "通过" if price_true == price_want else "失败"
-            self.log_data.append(result)
-            self.driver.screenshot(filename)
-            self.log_data.append(image_name)
-        else:
-            self.driver.screenshot(filename)
-            raise ValueError("Can't Find 'HK$' element.")
 
 
 

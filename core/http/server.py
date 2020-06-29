@@ -11,13 +11,13 @@ from wsgiref.simple_server import WSGIServer, WSGIRequestHandler
 
 from common.log import logger
 from common.helper import run_cmd, get_localhost, delay_after_operation
-from core.http.monitoring import monitoring
+from core.http.http_monitor import http_monitor
 from core.http.request import connect_central_server
 
 
 
 def qauto(environ, start_response):
-    result = monitoring(environ)
+    result = http_monitor(environ)
     with suppress(AssertionError):
         start_response("200", [("Content-Type", "text/html")])
     return result

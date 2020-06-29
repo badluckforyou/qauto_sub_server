@@ -843,6 +843,7 @@ class ClientResponse(HeadersMixin):
         with self._timer:
             while True:
                 # read response
+                await asyncio.sleep(0)
                 try:
                     message, payload = await self._protocol.read()  # type: ignore  # noqa
                 except http.HttpProcessingError as exc:

@@ -93,6 +93,9 @@ from .streams import FlowControlDataQueue
 from .tracing import Trace, TraceConfig
 from .typedefs import JSONEncoder, LooseCookies, LooseHeaders, StrOrURL
 
+import time
+from common.helper import G
+
 __all__ = (
     # client_exceptions
     'ClientConnectionError',
@@ -496,8 +499,7 @@ class ClientSession:
                         auto_decompress=self._auto_decompress,
                         read_timeout=real_timeout.sock_read)
 
-                    import time
-                    start_time = time.time()
+                    send_time = time.time()
                     try:
                         try:
                             resp = await req.send(conn)
@@ -513,7 +515,12 @@ class ClientSession:
                         raise
                     except OSError as exc:
                         raise ClientOSError(*exc.args) from exc
-                    print("Finished in %.2fs" % (time.time() - start_time))
+
+                    G.remind(**{"from_test_to_send": G.get_wait_time(send_time),
+                                "from_send_to_recv": "%.4fs" % (time.time() - send_time),
+                                "status_code": resp.status,
+                                "recv_data": await resp.text()})
+
                     self._cookie_jar.update_cookies(resp.cookies, resp.url)
 
                     # redirects

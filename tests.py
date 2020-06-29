@@ -1,15 +1,42 @@
+import os
 import time
+import platform
+import ujson as json
+
 from core.api.request import *
+from common.helper import get_execution
+
+
+if platform.system() == "Windows":
+    import win32file
+else:
+    win32file = None
+
+
+def record(data):
+    file = os.path.join(get_execution(), "result.txt")
+    with open(file, "w+", encoding="utf-8") as f:
+        f.write(json.dumps(data, indent=4, ensure_ascii=False))
 
 
 if __name__ == '__main__':
-    # win32file._setmaxstdio(2048)
-    # print(win32file._getmaxstdio())
-    data = []
-    robot_number = 1000
-    api = "http://project_x_api.stardustworld.cn/api/v1/login/"
+    if win32file is not None:
+        win32file._setmaxstdio(65535)
+    payload = []
+    robot_number = 2100
+    django = "http://192.168.1.37:8888/login/"
+    subserver = "http://192.168.1.37:8080/"
+    baidu = "http://www.baidu.com"
+    travel = "https://www.12306.cn/index/"
     for i in range(robot_number):
-        d = {'identity_type': str(i),
-            'identifier': 'e426cd52d8cf18f1620784f5756afff5123123213'}
-        data.append(d)
-    get("https://www.baidu.com", 1400)
+        d = {'username': "ylem",
+            'password': 'bindo123',
+            "remember": True}
+        payload.append(d)
+    # post(subserver, payload)
+    result = get(baidu, robot_number)
+    data = []
+    for r in result:
+        r["recv_data"] = ""
+        data.append(r)
+    record(data)

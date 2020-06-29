@@ -4,7 +4,7 @@ import requests
 from common.log import logger
 
 
-CENTRAL_SERVER_ADDRESS = "192.168.1.37"
+TARGET_HOST = "192.168.1.37"
 
 
 def post(*args, **kwargs):
@@ -29,7 +29,7 @@ def connect_central_server(data, host, port):
     returns:
         central server的返回数据 or None
     """
-    url = "http://%s:8888/automation/share/" % CENTRAL_SERVER_ADDRESS
+    url = "http://%s:8888/automation/share/" % TARGET_HOST
     data = {
         "username": data.username,
         "password": data.password,
@@ -41,7 +41,7 @@ def connect_central_server(data, host, port):
     return post(url, data=data)
 
 
-def send_2_central_server_insert(data):
+def insert_result(data):
     """
     向中心服发送测试结果数据
     Args:
@@ -57,17 +57,15 @@ def send_2_central_server_insert(data):
     # d = {}
     # for i, v in enumerate(cols):
     #     d.setdefault(v, data[i])
-    url = "http://%s:8888/result/insert/" % CENTRAL_SERVER_ADDRESS
+    url = "http://%s:8888/automation/result/insert/" % TARGET_HOST
     return post(url, data=data)
 
 
-def send_2_central_server_update(data):
+def update_task(data):
     """
     向中心服发送任务状态
     """
     if not isinstance(data, dict):
         return
-    if len(data) != 2:
-        return
-    url = "http://%s:8888/automation/update/" % CENTRAL_SERVER_ADDRESS
+    url = "http://%s:8888/automation/update/" % TARGET_HOST
     return post(url, data=data)

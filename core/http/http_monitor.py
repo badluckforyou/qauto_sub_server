@@ -40,7 +40,7 @@ def load_command_module(module, method):
     else: raise CommandError
 
 
-def monitoring(environ):
+def http_monitor(environ):
     try:
         request_queue_size = int(environ["CONTENT_LENGTH"])
     except:
@@ -82,3 +82,5 @@ def monitoring(environ):
         logger.info(data)
     result.append(data.encode(file_encoding))
     return result
+
+    

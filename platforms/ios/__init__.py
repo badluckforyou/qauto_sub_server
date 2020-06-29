@@ -2,7 +2,7 @@ import traceback
 
 from common.record import Record
 from platforms.ios.methods import *
-from core.http.request import send_2_central_server_update
+from core.http.request import update_task
 
 
 __author__ = "Jackey"
@@ -35,4 +35,4 @@ def retail_02(id, *args):
     except:
         traceback.print_exc()
         data = {"id": id, "status": "空闲"}
-        send_2_central_server_update(data)
+        update_task(data)
