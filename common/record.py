@@ -33,7 +33,6 @@ class Record:
             try:
                 ret = func(self, *args, **kwargs)
             except Exception:
-                Logger.error(traceback.format_exc())
                 # 打印报错
                 logger.error(traceback.format_exc())
             else:
@@ -60,7 +59,6 @@ class Record:
                         else:
                             msg += "{}, ".format(arg)
                 Logger.info(msg)
-                logger.info(msg)
         return wrapper
 
     @staticmethod

@@ -22,3 +22,5 @@ class Settings:
     drag_hidden_ele_times = 3
     # 点击间隔, 供click()等函数使用
     click_interval = 0.75
+
+    target_host = ""

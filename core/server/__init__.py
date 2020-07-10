@@ -11,8 +11,8 @@ from wsgiref.simple_server import WSGIServer, WSGIRequestHandler
 
 from common.log import logger
 from common.helper import run_cmd, get_localhost, delay_after_operation
-from core.http.http_monitor import http_monitor
-from core.http.request import connect_central_server
+from utils.http_monitor import http_monitor
+from utils.django_communication import connect_central_server
 
 
 
@@ -42,8 +42,10 @@ def release_port(port):
         if not line or "Python" not in line:
             continue
         pid = pattern.findall(line)[0]
+        if pid:
+            break
     if pid:
-        logger.warn("The port %s is in used by process which pid=%s, we are trying to kill it." % (port, pid))
+        logger.warn("Start to kill port %s in used by process %s." % (port, pid))
         [run_cmd(["kill", pid]) for _ in range(2)]
 
 
@@ -71,7 +73,7 @@ def server_monitor(data, host, port, queue):
     while True:
         if status is False:
             server_thread = threading.Thread(target=run_server, args=(data, host, port, queue))
-            server_thread.setDaemon(False)
+            server_thread.setDaemon(True)
             server_thread.start()
             status = True
         _host = get_localhost()

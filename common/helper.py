@@ -5,7 +5,6 @@ import base64
 import socket
 import datetime
 import subprocess
-import ujson as json
 
 from contextlib import suppress
 
@@ -73,13 +72,14 @@ def delay_after_operation(s):
 
 
 def get_localhost():
-    """Return localhost"""
+    """获取本地ip"""
     while True:
         try:
             name = socket.getfqdn(socket.gethostname())
         except:
             name = socket.gethostname()
-        return socket.gethostbyname(name)
+        with suppress(Exception):
+            return socket.gethostbyname(name)
 
 
 def image2str(image):
@@ -141,7 +141,7 @@ class FormatTime:
         try:
             time = cls.check_format(time)
             if time < 0:
-                raise ValueError
+                raise ValueError("Time '%s' is smaller than 0." % time)
         except:
             raise ValueError("Format time '%s' fialed." % time)
         m, s = divmod(time, 60)

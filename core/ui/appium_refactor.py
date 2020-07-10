@@ -40,7 +40,7 @@ class AppiumRefactor:
         if platform is None:
             raise PlatformError
         if not isinstance(session, dict):
-            raise ValueError("Appium gets a rong session: %s" % session)
+            raise ValueError("Appium gets a wrong session: %s" % session)
         try:
             self.init_driver = webdriver.Remote("http://localhost:4723/wd/hub", session)
             self.driver = self.init_driver
@@ -225,4 +225,14 @@ class AppiumRefactor:
         else:
             # 截图并将图片存在当前位置
             self.driver.save_screenshot(filename)
-        
+    
+    def stop(self):
+        self.driver.close_app()
+
+    def start(self):
+        self.driver.launch_app()
+
+    def restart(self):
+        self.close()
+        delay_after_operation(0.5)
+        self.start()

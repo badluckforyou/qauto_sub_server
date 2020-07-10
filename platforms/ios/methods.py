@@ -7,11 +7,12 @@ import time
 import json
 
 from difflib import get_close_matches
+from contextlib import suppress
 
 from common.csv import Csv
 from common.helper import (time_without_second, time_without_bracket, current_time,
                             delay_after_operation, image2str, FormatTime, Logger, get_automatedtesting)
-from core.http.request import insert_result, update_task
+from utils.django_communication import insert_result, update_task
 from platforms.identifier import iOSSession
 
 
@@ -21,12 +22,15 @@ __all__ = ("Common", "Retail")
 def strip_space(data, kwall=False):
     return data.lstrip(" ").rstrip(" ") if kwall is False else data.replace(" ")
 
+
 def check_food(f):
     special_foods = ["美國有骨肉眼扒(40安士)", "Sirloin 10oz", "午室套餐"]
     for food in special_foods:
         if f in food:
             return food
 
+class FuncError(Exception):
+    pass
 
 class Automation:
 
@@ -195,39 +199,51 @@ class Retail(Automation):
         self.date = current_time("%Y-%m-%d %X")
         update_task({"id": self.id, "date": self.date})
         csv = Csv("RetailTestCasesBatch5.csv")
+        imagepath = get_automatedtesting()
         for args in self.steps:
-            self.log = list()
-            self.result = dict()
-            self.result.setdefault("date", self.date)
-            self.result.setdefault("username", self.username)
-            self.result.setdefault("project", self.project)
-            self.result.setdefault("casename", args[0])
-            self.log.append(args[0])
+            self.image = os.path.join(imagepath, "%s.png" % time_without_second())
+            self.result = {"date": self.date,
+                            "username": self.username,
+                            "project": self.project,
+                            "casename": args[0],
+                            "runtime": time_without_bracket(),
+                            "resultwanted": None,
+                            "resultinfact": None,
+                            "testresult": "失败",
+                            "costtime": None,
+                            "log": "",
+                            "report": json.dumps("\r".join(args)),
+                            "image": None}
             start_time = time.time()
-            now = time_without_bracket()
-            self.result.setdefault("runtime", now)
-            self.log.append(now)
-            if args[1]:
-                self.add_coustomer(args[1])
-            if args[2]:
-                self.choose_discount(args[2])
-            self.click_by_text("Bindo")
-            if args[3]:
-                self.click_by_text(args[3])
-            self.add_goods(args[4])
-            self.get_result(args[5], start_time)
-            self.discard.click()
-            delay_after_operation(0.1)
-            self.find_by_button("Discard").click()
-            self.result.setdefault("costtime", FormatTime.format(time.time() - start_time))
-            self.log.append(FormatTime.format(time.time() - start_time))
-            self.result.setdefault("log", json.dumps("\r".join(Logger.LOG)))
-            self.result.setdefault("report", json.dumps("\r".join(args)))
-            self.result.setdefault("image", image2str(self.image))
-            os.remove(self.image)
-            Logger.init()
-            insert_result(self.result)
-            csv.write(self.log)
+            try:
+                if args[1]:
+                    self.add_coustomer(args[1])
+                if args[2]:
+                    self.choose_discount(args[2])
+                self.click_by_text("Bindo")
+                if args[3]:
+                    self.click_by_text(args[3])
+                self.add_goods(args[4])
+
+                try:
+                    self.get_result(args[5], start_time)
+                except:
+                    self.driver.screenshot(self.image)
+
+                self.discard.click()
+                delay_after_operation(0.1)
+                self.find_by_button("Discard").click()
+            except:
+                self.driver.screenshot(self.image)
+                self.driver.restart()
+            finally:
+                self.result["costtime"] = FormatTime.format(time.time() - start_time)
+                self.result["log"] = json.dumps("\r".join(Logger.LOG))
+                self.result["image"] = image2str(self.image)
+                Logger.init()
+                insert_result(self.result)
+                os.remove(self.image)
+
         data = {"id": self.id, "status": "完成"}
         update_task(data)
 
@@ -276,9 +292,6 @@ class Retail(Automation):
             delay_after_operation(30)
         elif use_time >= 1000:
             delay_after_operation(60)
-        imagepath = get_automatedtesting()
-        image_name = "%s.png" % time_without_second()
-        self.image = os.path.join(imagepath, image_name)
         delay_after_operation(1)
         ele = self.find_by_text("HK$")
         if ele:

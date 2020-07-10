@@ -25,7 +25,7 @@ ExecutablePath.executable_path = None
 
 
 if __name__ == '__main__':
-    from core.management import execute_from_command_line
+    from utils.management import execute_from_command_line
     try:
         execute_from_command_line(sys.argv)
     except:

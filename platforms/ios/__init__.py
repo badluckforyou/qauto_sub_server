@@ -2,29 +2,41 @@ import traceback
 
 from common.record import Record
 from platforms.ios.methods import *
-from core.http.request import update_task
-
-
-__author__ = "Jackey"
+from utils.django_communication import update_task
 
 
 
 @Record.finish
-def gg8157(app, testcase):
-    test = Common(app, case)
-    test.start()
+def gg8157(id, *args):
+    try:
+        test = Common(id, *args)
+        test.start()
+    except:
+        traceback.print_exc()
+        data = {"id": id, "status": "空闲"}
+        update_task(data)
 
 
 @Record.finish
-def gg8157_ta(app, testcase):
-    test = Common(app, logpath, file, names)
-    test.start()
+def gg8157_ta(id, *args):
+    try:
+        test = Common(id, *args)
+        test.start()
+    except:
+        traceback.print_exc()
+        data = {"id": id, "status": "空闲"}
+        update_task(data)
 
 
 @Record.finish
-def k7701(app, testcase):
-    test = Common(app, logpath, file, names)
-    test.start()
+def k7701(id, *args):
+    try:
+        test = Common(id, *args)
+        test.start()
+    except:
+        traceback.print_exc()
+        data = {"id": id, "status": "空闲"}
+        update_task(data)
 
 
 @Record.finish
