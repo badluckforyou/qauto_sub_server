@@ -57,7 +57,7 @@ def run_server(data, host, port, queue):
         return
     if "success" not in ret.lower():
         logger.error(ret)
-        return
+        raise
     else:
         logger.info(ret)
     server = WSGIServer((host, port), WSGIRequestHandler)
@@ -76,15 +76,15 @@ def server_monitor(data, host, port, queue):
             server_thread.setDaemon(True)
             server_thread.start()
             status = True
-        _host = get_localhost()
-        if host != _host:
+        current_host = get_localhost()
+        if current_host is not None and host != current_host:
             logger.warn("Sub-server's host is changed to %s, restart sub-server." % _host)
             server = queue.get() or None
             if server is None:
                 break
             server.shutdown()
             status = False
-            host = _host
+            host = current_host
         delay_after_operation(10)
 
 
@@ -92,6 +92,8 @@ def http_server_start(data):
     """启动子服务器"""
     queue = Queue()
     host = get_localhost()
+    if host is None:
+        raise ValueError("Get host failed.")
     port = data.port
     # 刚启动服务器时, 需要先检测端口占用情况, 如果被占用则尝试释放
     release_port(port)

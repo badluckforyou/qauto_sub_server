@@ -70,7 +70,7 @@ def http_monitor(environ):
                         package  = post_data["package"]
                         function = load_command_module(platform, project.lower())
                         thread = threading.Thread(target=function, args=(id, username, project, package, testcase))
-                        thread.setDaemon(False)
+                        thread.setDaemon(True)
                         thread.start()
                         data = SUCCESS
                     except:

@@ -51,12 +51,6 @@ def insert_result(data):
         return
     if len(data) != 12:
         return
-    # cols = ["username", "project", "casename", 
-    #         "runtime", "resultwanted", "resultinfact",
-    #         "testresult", "costtime", "log", "report", "image"]
-    # d = {}
-    # for i, v in enumerate(cols):
-    #     d.setdefault(v, data[i])
     url = "http://%s:8888/automation/result/insert/" % TARGET_HOST
     return post(url, data=data)
 

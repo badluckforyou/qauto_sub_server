@@ -8,8 +8,8 @@ import subprocess
 
 from contextlib import suppress
 
-def current_time(_format):
-    return datetime.datetime.now().strftime(_format)
+def current_time(fmt):
+    return datetime.datetime.now().strftime(fmt)
 
 def time_covered_bracket():
     """返回[20-04-17 01:32:39]格式的时间"""
@@ -67,7 +67,7 @@ def get_execution():
 
 
 def delay_after_operation(s):
-    """Use this to avoid writing lots of time.sleep in the codes"""
+    """Use this to avoid writing lots of 'time.sleep' in the codes"""
     time.sleep(s)
 
 
@@ -78,8 +78,14 @@ def get_localhost():
             name = socket.getfqdn(socket.gethostname())
         except:
             name = socket.gethostname()
-        with suppress(Exception):
+        try:
             return socket.gethostbyname(name)
+        except:
+            with suppress(Exception):
+                conn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                conn.connect(("8.8.8.8", 8))
+                return conn.getsockname()[0]
+
 
 
 def image2str(image):
